@@ -1,3 +1,4 @@
+
 var Service = require('node-windows').Service;
 
 // Create a new service object

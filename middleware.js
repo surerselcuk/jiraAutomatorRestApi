@@ -1,6 +1,7 @@
 const config = require('./bin/config');
 const jwt = require('jsonwebtoken');
 
+
 // Token Doğrular.
 var verifyToken = (req,res,next)=>{
 
