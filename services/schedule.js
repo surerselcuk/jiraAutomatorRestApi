@@ -150,7 +150,8 @@ var daily = ()=>{
       db.exec(`update schedule set status='success', last_run_date='${currentDate}', next_run_date='${JSON.parse(rows.schedules)[0]}', schedules='${JSON.stringify(JSON.parse(rows.schedules).splice(1))}' where id=${rows.id}`);
       db.exec(`insert into logs (subject_id,subject,date,user,status,log) Values('${rows.id}','Auto Issue Create','${currentDateTime}','${config.jiraAdminUser}','success','${JSON.stringify(data)}'  )`);
     }).catch(err=>{
-      db.exec(`update schedule set status='fail', last_run_date='${currentDate}' where id=${rows.id}`);
+      db.exec(`update schedule set status='fail', last_run_date='${currentDate}', next_run_date='${JSON.parse(rows.schedules)[0]}', schedules='${JSON.stringify(JSON.parse(rows.schedules).splice(1))}' where id=${rows.id}`);
+      //db.exec(`update schedule set status='fail', last_run_date='${currentDate}' where id=${rows.id}`);
       db.exec(`insert into logs (subject_id,subject,date,user,status,log) Values('${rows.id}','Auto Issue Create','${currentDateTime}','${config.jiraAdminUser}','fail','${JSON.stringify(err)}'  )`);
     });
 

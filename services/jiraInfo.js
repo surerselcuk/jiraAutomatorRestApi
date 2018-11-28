@@ -128,7 +128,7 @@ let isAdmin =  (username) => {
     method: 'GET',
     // url: 'https://itracktest.innova.com.tr/rest/api/3/member?groupname=jira-users',
     url: config.protocol+config.jiraUrl+'/rest/api/2/group?groupname='+config.jiraAdminGroup+'&expand=users',
-    auth: { username: "ssurer", password: "Kardelen12"},
+    auth: { username: config.jiraAdminUserControlUser, password: config.jiraAdminUserControlPass},
     headers: {
       'Accept': 'application/json'
     }
